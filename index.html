@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dasari Sumanth — Digital Marketing Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0C10;
+      --surface: #111418;
+      --surface2: #181c23;
+      --border: rgba(255,255,255,0.07);
+      --accent: #00D4A0;
+      --accent2: #0085FF;
+      --accent3: #FF6B35;
+      --text: #E8EAF0;
+      --text-muted: #7A8090;
+      --text-dim: #3A4050;
+      --glow: rgba(0,212,160,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,12,16,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: #00f5b8 !important; color: #000 !important; }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,160,0.12) 0%, transparent 70%);
+      top: 50%;
+      right: -100px;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .hero-glow2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,133,255,0.08) 0%, transparent 70%);
+      bottom: -100px;
+      left: 100px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,212,160,0.1);
+      border: 1px solid rgba(0,212,160,0.3);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-name .line2 {
+      display: block;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+      color: transparent;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title {
+      font-family: 'DM Mono', monospace;
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-desc strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary:hover {
+      background: #00f5b8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,212,160,0.3);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.8rem 1.8rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── SECTION STRUCTURE ── */
+    section {
+      padding: 6rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 3.5rem;
+    }
+
+    .divider {
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--surface); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+
+    .about-text p strong { color: var(--text); font-weight: 500; }
+
+    .about-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .about-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .about-card:hover {
+      border-color: rgba(0,212,160,0.4);
+      transform: translateY(-4px);
+    }
+
+    .about-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .about-card h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .about-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ── SKILLS ── */
+    #skills {}
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-category::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+
+    .skill-category:hover::before { transform: scaleX(1); }
+
+    .skill-category:hover {
+      border-color: rgba(0,212,160,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .skill-category-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-category-title .icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .cat-seo .icon { background: rgba(0,212,160,0.15); }
+    .cat-ads .icon { background: rgba(0,133,255,0.15); }
+    .cat-email .icon { background: rgba(255,107,53,0.15); }
+    .cat-social .icon { background: rgba(168,85,247,0.15); }
+    .cat-lead .icon { background: rgba(251,191,36,0.15); }
+    .cat-content .icon { background: rgba(236,72,153,0.15); }
+
+    .skill-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.03em;
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: rgba(0,212,160,0.1);
+      border-color: rgba(0,212,160,0.4);
+      color: var(--accent);
+    }
+
+    /* ── TOOLS ── */
+    #tools { background: var(--surface); }
+
+    .tools-categories { display: flex; flex-direction: column; gap: 2.5rem; }
+
+    .tools-group h3 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .tool-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      color: var(--text);
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: default;
+    }
+
+    .tool-chip:hover {
+      border-color: rgba(0,212,160,0.5);
+      color: var(--accent);
+      background: rgba(0,212,160,0.05);
+      transform: translateY(-2px);
+    }
+
+    .tool-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience {}
+
+    .timeline {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3.5rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.85rem;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(0,212,160,0.2);
+    }
+
+    .timeline-period {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .timeline-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .timeline-company {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,133,255,0.1);
+      border: 1px solid rgba(0,133,255,0.2);
+      color: var(--accent2);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .timeline-location {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      margin-bottom: 1.2rem;
+    }
+
+    .timeline-achievements {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .achievement {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .achievement-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0,212,160,0.1);
+      border: 1px solid rgba(0,212,160,0.2);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .achievement-icon::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .achievement p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .achievement p strong { color: var(--text); font-weight: 500; }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--surface); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+
+    .project-card:hover::after { transform: scaleX(1); }
+
+    .project-card:hover {
+      border-color: rgba(0,212,160,0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    }
+
+    .project-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text-dim);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,212,160,0.08);
+      border: 1px solid rgba(0,212,160,0.2);
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .project-tag {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* ── EDUCATION ── */
+    #education {}
+
+    .edu-cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .edu-list, .cert-list { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .edu-item, .cert-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .edu-item:hover, .cert-item:hover {
+      border-color: rgba(0,212,160,0.3);
+    }
+
+    .edu-degree {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-school {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .cert-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .cert-issuer {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .sub-section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--surface);
+      text-align: center;
+    }
+
+    .contact-inner { max-width: 640px; margin: 0 auto; }
+
+    .contact-inner .section-label, .contact-inner .section-title, .contact-inner .section-subtitle {
+      text-align: center;
+    }
+
+    .contact-inner .divider { margin-left: auto; margin-right: auto; }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.6rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(0,212,160,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    .contact-link-left { display: flex; align-items: center; gap: 14px; }
+
+    .contact-link-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .contact-link-info h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      text-align: left;
+    }
+
+    .contact-link-info p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: left;
+    }
+
+    .contact-arrow {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .contact-link:hover .contact-arrow {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 4rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    footer span { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--text-dim); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    /* ── MOBILE RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(10,12,16,0.98);
+        backdrop-filter: blur(20px);
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        z-index: 99;
+      }
+      .hamburger { display: flex; }
+      #hero { padding: 7rem 2rem 4rem; }
+      section { padding: 4rem 2rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-cards { grid-template-columns: 1fr 1fr; }
+      .edu-cert-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-stats { gap: 1.5rem; }
+      footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-name { font-size: 2.6rem; }
+      .about-cards { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .hero-stats { flex-wrap: wrap; gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">DS<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Available for new opportunities</div>
+    <h1 class="hero-name">
+      Dasari Sumanth<br>
+      <span class="line2">Reddy</span>
+    </h1>
+    <p class="hero-title">// AI-Powered Digital Marketing Specialist</p>
+    <p class="hero-desc">
+      I help businesses <strong>grow online through data-driven marketing</strong> — combining the power of SEO, paid ads, automation, and intelligent content strategy to generate qualified leads and measurable revenue growth.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4</span>
+        <span class="stat-label">Industries Served</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">30+</span>
+        <span class="stat-label">Tools Mastered</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">7</span>
+        <span class="stat-label">Certifications</span>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#experience" class="btn-primary">View My Work →</a>
+      <a href="#contact" class="btn-secondary">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="fade-in">
+    <p class="section-label">01 — About</p>
+    <h2 class="section-title">Marketing meets<br>intelligence</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      <p>I'm a <strong>results-driven digital marketing specialist</strong> with over 5 years of experience turning online visibility into real business outcomes. My approach blends creativity with analytical rigor — every campaign I run is backed by data, every decision is tied to measurable impact.</p>
+      <p>From <strong>building B2B lead generation funnels</strong> that consistently deliver qualified pipeline, to orchestrating multi-channel SEO strategies that move the needle on organic traffic — I specialize in making complex marketing ecosystems work in harmony.</p>
+      <p>What sets me apart is my fluency with <strong>AI-powered marketing tools and automation</strong>. I don't just use technology; I architect it to scale campaigns that would otherwise require entire teams, delivering enterprise-grade results with lean execution.</p>
+    </div>
+    <div class="about-cards">
+      <div class="about-card">
+        <div class="about-card-icon">🎯</div>
+        <h4>Lead Generation</h4>
+        <p>B2B & B2C funnels that convert prospects into qualified pipeline consistently.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🔍</div>
+        <h4>SEO Expert</h4>
+        <p>Full-spectrum optimization from technical audits to content strategy and link building.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">⚡</div>
+        <h4>Marketing Automation</h4>
+        <p>CRM workflows and multi-channel sequences that nurture leads at scale.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">📊</div>
+        <h4>Data Analytics</h4>
+        <p>Turning raw marketing data into clear strategic decisions and campaign refinements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="fade-in">
+    <p class="section-label">02 — Skills</p>
+    <h2 class="section-title">Areas of expertise</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">A comprehensive skill set spanning the full digital marketing spectrum — from organic growth to paid acquisition, automation to analytics.</p>
+  </div>
+  <div class="skills-grid fade-in">
+
+    <div class="skill-category cat-seo">
+      <div class="skill-category-title">
+        <div class="icon">🔍</div>
+        Search Engine Optimization
+      </div>
+      <p class="skill-desc">End-to-end SEO execution — from technical site audits to content-driven authority building. Proven in improving keyword rankings, driving organic traffic, and generating inbound leads.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">On-Page SEO</span>
+        <span class="skill-tag">Off-Page SEO</span>
+        <span class="skill-tag">Technical SEO</span>
+        <span class="skill-tag">Local SEO</span>
+        <span class="skill-tag">Site Audits</span>
+        <span class="skill-tag">Competitor Analysis</span>
+        <span class="skill-tag">Programmatic SEO</span>
+        <span class="skill-tag">SERP Analysis</span>
+        <span class="skill-tag">Link Building</span>
+        <span class="skill-tag">Keyword Research</span>
+      </div>
+    </div>
+
+    <div class="skill-category cat-ads">
+      <div class="skill-category-title">
+        <div class="icon">📣</div>
+        Paid Advertising
+      </div>
+      <p class="skill-desc">Strategic paid media management across Google, Meta, and LinkedIn — focused on conversion-optimized campaigns, smart retargeting, and budget efficiency that maximizes ROAS.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Google Ads</span>
+        <span class="skill-tag">Meta Ads</span>
+        <span class="skill-tag">LinkedIn Ads</span>
+        <span class="skill-tag">Retargeting</span>
+        <span class="skill-tag">Budget Optimization</span>
+        <span class="skill-tag">A/B Testing</span>
+        <span class="skill-tag">Conversion Tracking</span>
+        <span class="skill-tag">Audience Segmentation</span>
+      </div>
+    </div>
+
+    <div class="skill-category cat-email">
+      <div class="skill-category-title">
+        <div class="icon">📧</div>
+        Email & Marketing Automation
+      </div>
+      <p class="skill-desc">Designing high-converting email sequences and automated nurturing workflows that engage prospects at every funnel stage — from cold outreach to closed deals.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Cold Outreach</span>
+        <span class="skill-tag">Funnel Building</span>
+        <span class="skill-tag">Segmentation</span>
+        <span class="skill-tag">Behavioral Automation</span>
+        <span class="skill-tag">Lead Nurturing</span>
+        <span class="skill-tag">Lead Scoring</span>
+        <span class="skill-tag">Email Deliverability</span>
+        <span class="skill-tag">CRM Automation</span>
+      </div>
+    </div>
+
+    <div class="skill-category cat-social">
+      <div class="skill-category-title">
+        <div class="icon">📱</div>
+        Social Media Marketing
+      </div>
+      <p class="skill-desc">Building brand presence and community across LinkedIn, Facebook, and Instagram through strategic content planning, scheduling, and engagement — plus LinkedIn automation for B2B outreach.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Content Strategy</span>
+        <span class="skill-tag">Calendar Planning</span>
+        <span class="skill-tag">Short-Form Video</span>
+        <span class="skill-tag">LinkedIn Automation</span>
+        <span class="skill-tag">Community Management</span>
+        <span class="skill-tag">Influencer Outreach</span>
+        <span class="skill-tag">Analytics & Reporting</span>
+      </div>
+    </div>
+
+    <div class="skill-category cat-lead">
+      <div class="skill-category-title">
+        <div class="icon">🎯</div>
+        Lead Generation & CRM
+      </div>
+      <p class="skill-desc">Full-cycle B2B lead generation from ICP definition and data mining to outreach execution and CRM pipeline management — ensuring no prospect falls through the cracks.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">ICP Development</span>
+        <span class="skill-tag">Buyer Persona</span>
+        <span class="skill-tag">Data Mining</span>
+        <span class="skill-tag">Cold Outreach</span>
+        <span class="skill-tag">CRM Management</span>
+        <span class="skill-tag">Database Building</span>
+        <span class="skill-tag">Prospect Research</span>
+        <span class="skill-tag">Pipeline Tracking</span>
+      </div>
+    </div>
+
+    <div class="skill-category cat-content">
+      <div class="skill-category-title">
+        <div class="icon">✍️</div>
+        Content & Creative
+      </div>
+      <p class="skill-desc">Producing high-impact marketing assets — from SEO-optimized web copy and case studies to video content and sales collateral — that resonate with target audiences and drive action.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">SEO Copywriting</span>
+        <span class="skill-tag">Case Studies</span>
+        <span class="skill-tag">Video Production</span>
+        <span class="skill-tag">AI-Assisted Content</span>
+        <span class="skill-tag">Sales Collateral</span>
+        <span class="skill-tag">Landing Pages</span>
+        <span class="skill-tag">One-Pagers</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="fade-in">
+    <p class="section-label">03 — Tools & Technologies</p>
+    <h2 class="section-title">My tech stack</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Proficient across 30+ industry-leading platforms covering every layer of the digital marketing ecosystem.</p>
+  </div>
+  <div class="tools-categories fade-in">
+
+    <div class="tools-group">
+      <h3>SEO & Analytics</h3>
+      <div class="tools-list">
+        <div class="tool-chip"><span class="tool-dot" style="background:#22c55e"></span>SEMrush</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#0ea5e9"></span>Ahrefs</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#f59e0b"></span>Moz</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#8b5cf6"></span>Google Search Console</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#f97316"></span>Google Analytics 4</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#22c55e"></span>Google Tag Manager</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#ec4899"></span>Ubersuggest</div>
+      </div>
+    </div>
+
+    <div class="tools-group">
+      <h3>CRM & Marketing Automation</h3>
+      <div class="tools-list">
+        <div class="tool-chip"><span class="tool-dot" style="background:#f97316"></span>HubSpot</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#22c55e"></span>GoHighLevel</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#0ea5e9"></span>Zoho CRM</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#0ea5e9"></span>Salesforce</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#8b5cf6"></span>ActiveCampaign</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#f59e0b"></span>Make.com</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#22c55e"></span>Apify</div>
+      </div>
+    </div>
+
+    <div class="tools-group">
+      <h3>Email & Outreach</h3>
+      <div class="tools-list">
+        <div class="tool-chip"><span class="tool-dot" style="background:#f97316"></span>Instantly</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#0ea5e9"></span>Apollo.io</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#22c55e"></span>ZoomInfo</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#8b5cf6"></span>Seamless.ai</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#f59e0b"></span>GetProspect</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#ec4899"></span>Prospect.io</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#22c55e"></span>Sales Navigator</div>
+      </div>
+    </div>
+
+    <div class="tools-group">
+      <h3>LinkedIn & Social Automation</h3>
+      <div class="tools-list">
+        <div class="tool-chip"><span class="tool-dot" style="background:#0ea5e9"></span>Heyreach</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#8b5cf6"></span>Skylead</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#f97316"></span>Buffer</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#22c55e"></span>Publer</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#f59e0b"></span>Hootsuite</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#ec4899"></span>HipSocial</div>
+      </div>
+    </div>
+
+    <div class="tools-group">
+      <h3>AI Content & Video Creation</h3>
+      <div class="tools-list">
+        <div class="tool-chip"><span class="tool-dot" style="background:#f97316"></span>HeyGen</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#8b5cf6"></span>Synthesia</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#0ea5e9"></span>Riverside</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#22c55e"></span>InVideo</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#f59e0b"></span>ElevenLabs</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#ec4899"></span>Canva</div>
+      </div>
+    </div>
+
+    <div class="tools-group">
+      <h3>Paid Advertising Platforms</h3>
+      <div class="tools-list">
+        <div class="tool-chip"><span class="tool-dot" style="background:#f97316"></span>Google Ads</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#0ea5e9"></span>LinkedIn Campaign Manager</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#8b5cf6"></span>Meta Ads Manager</div>
+        <div class="tool-chip"><span class="tool-dot" style="background:#22c55e"></span>Facebook Business Suite</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="fade-in">
+    <p class="section-label">04 — Work Experience</p>
+    <h2 class="section-title">Career journey</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">5+ years of progressive growth across B2B and B2C environments, steadily taking on greater responsibility and impact.</p>
+  </div>
+
+  <div class="timeline fade-in">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Mar 2025 — Present</div>
+      <div class="timeline-header">
+        <div class="timeline-role">Sr. Digital Marketing Executive</div>
+        <div class="timeline-company">🏢 KoreRPO</div>
+      </div>
+      <div class="timeline-location">📍 Hyderabad, Telangana</div>
+      <div class="timeline-achievements">
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Architected and executed <strong>end-to-end B2B demand generation programs</strong>, integrating email outreach, LinkedIn automation, and SEO to build a consistent inbound and outbound pipeline.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Deployed cold email campaigns via <strong>HubSpot, ActiveCampaign, and Instantly</strong> — with precision segmentation and behavioral triggers that significantly improved open rates and lead qualification.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Ran <strong>LinkedIn Ads and LinkedIn automation</strong> (Heyreach, Skylead) to connect with decision-makers, generating qualified sales meetings and growing brand authority in target verticals.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Managed full social media ecosystem using <strong>GoHighLevel, Publer, and Buffer</strong> — overseeing content creation, scheduling, and engagement across all major platforms.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Built and maintained <strong>multi-CRM workflows</strong> across HubSpot, Zoho, Salesforce, and GoHighLevel — automating lead nurturing sequences and keeping sales pipeline data clean and actionable.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Created marketing assets — case studies, SEO money pages, AI-generated videos — using <strong>HeyGen, Synthesia, and Riverside</strong> to support both brand and sales enablement goals.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Nov 2023 — Mar 2025</div>
+      <div class="timeline-header">
+        <div class="timeline-role">Digital Marketing Executive</div>
+        <div class="timeline-company">🏢 SBase Technologies</div>
+      </div>
+      <div class="timeline-location">📍 Hyderabad, Telangana</div>
+      <div class="timeline-achievements">
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Drove high-quality lead acquisition through <strong>strategic email marketing and Google Ads campaigns</strong>, achieving measurable improvements in lead volume and conversion efficiency.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Developed and executed <strong>comprehensive SEO strategies</strong> targeting competitive keywords — resulting in improved organic search rankings and a steady increase in qualified inbound traffic.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Conducted <strong>business intelligence research</strong> on target accounts — mapping key decision-makers, pain points, and buying signals to sharpen outreach personalization and relevance.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Managed <strong>social media accounts across Facebook, Instagram, and LinkedIn</strong> — developing content calendars and posting schedules that grew engagement and brand visibility.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Dec 2022 — Sep 2023</div>
+      <div class="timeline-header">
+        <div class="timeline-role">Digital Marketing Executive</div>
+        <div class="timeline-company">🏢 Mantra Technologies</div>
+      </div>
+      <div class="timeline-location">📍 Hyderabad, Telangana</div>
+      <div class="timeline-achievements">
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Performed <strong>deep keyword research</strong> to uncover high-traffic, low-competition opportunities, systematically optimizing product pages to improve rankings and relevance.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Collaborated cross-functionally with product, design, and development teams to ensure <strong>every web asset was fully SEO-optimized</strong> at launch and on an ongoing basis.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Executed <strong>off-page SEO and link-building strategies</strong> including targeted backlink acquisition, forum outreach, and social bookmarking — boosting domain authority over time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Jun 2020 — Nov 2022</div>
+      <div class="timeline-header">
+        <div class="timeline-role">Social Media Specialist</div>
+        <div class="timeline-company">🏢 The Friger Co</div>
+      </div>
+      <div class="timeline-location">📍 Hyderabad, Telangana</div>
+      <div class="timeline-achievements">
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Developed and designed <strong>platform-specific content</strong> — text posts, images, videos, and infographics — tailored to each channel's audience and engagement patterns.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Identified and <strong>managed influencer collaborations</strong> to extend campaign reach, sourcing relevant creators aligned with brand values and target demographics.</p>
+        </div>
+        <div class="achievement">
+          <div class="achievement-icon"></div>
+          <p>Tracked and analyzed <strong>social media performance metrics</strong> across platforms — producing regular reports and translating data into concrete strategy refinements.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="fade-in">
+    <p class="section-label">05 — Projects</p>
+    <h2 class="section-title">Featured work</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Select initiatives where strategy, creativity, and execution converged to deliver real business results.</p>
+  </div>
+
+  <div class="projects-grid fade-in">
+
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-title">B2B Multi-Channel Lead Generation Engine</div>
+      <p class="project-desc">Designed and deployed an integrated outbound system combining cold email sequences, LinkedIn automation, and paid ads — creating a predictable, scalable pipeline for B2B sales teams.</p>
+      <div class="project-result">📈 Consistent qualified lead flow generated weekly</div>
+      <div class="project-tags">
+        <span class="project-tag">HubSpot</span>
+        <span class="project-tag">Instantly</span>
+        <span class="project-tag">Heyreach</span>
+        <span class="project-tag">LinkedIn Ads</span>
+        <span class="project-tag">Apollo.io</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-title">Technical SEO Overhaul & Organic Growth Program</div>
+      <p class="project-desc">Conducted a comprehensive technical SEO audit identifying critical site issues, then rebuilt on-page structure, improved Core Web Vitals, and launched a targeted link-building campaign to drive organic growth.</p>
+      <div class="project-result">🚀 Significant improvement in keyword rankings & organic traffic</div>
+      <div class="project-tags">
+        <span class="project-tag">SEMrush</span>
+        <span class="project-tag">Ahrefs</span>
+        <span class="project-tag">GSC</span>
+        <span class="project-tag">GA4</span>
+        <span class="project-tag">GTM</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-title">CRM Automation & Marketing Workflow Integration</div>
+      <p class="project-desc">Built automated multi-CRM workflows spanning HubSpot, Salesforce, and GoHighLevel — creating seamless lead handoff processes between marketing and sales with behavioral triggers and lead scoring logic.</p>
+      <div class="project-result">⚡ Reduced manual follow-up time significantly</div>
+      <div class="project-tags">
+        <span class="project-tag">HubSpot</span>
+        <span class="project-tag">Salesforce</span>
+        <span class="project-tag">GoHighLevel</span>
+        <span class="project-tag">Make.com</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">04</div>
+      <div class="project-title">AI-Powered Content Production Pipeline</div>
+      <p class="project-desc">Created a systematic content production workflow using AI video tools (HeyGen, Synthesia) and voice generation (ElevenLabs) — enabling high-volume, professional-grade video and written content at a fraction of traditional cost.</p>
+      <div class="project-result">🎬 10x content output with consistent brand quality</div>
+      <div class="project-tags">
+        <span class="project-tag">HeyGen</span>
+        <span class="project-tag">Synthesia</span>
+        <span class="project-tag">ElevenLabs</span>
+        <span class="project-tag">Riverside</span>
+        <span class="project-tag">InVideo</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">05</div>
+      <div class="project-title">Google Ads Performance Optimization</div>
+      <p class="project-desc">Restructured underperforming Google Ads accounts with revised campaign architecture, tightened audience targeting, conversion tracking setup, and iterative A/B testing of ad copy and landing pages.</p>
+      <div class="project-result">💰 Improved ROAS through systematic optimization</div>
+      <div class="project-tags">
+        <span class="project-tag">Google Ads</span>
+        <span class="project-tag">GA4</span>
+        <span class="project-tag">GTM</span>
+        <span class="project-tag">A/B Testing</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">06</div>
+      <div class="project-title">Social Media Brand Authority Campaign</div>
+      <p class="project-desc">Managed full-spectrum social media presence across LinkedIn, Instagram, and Facebook — building brand narrative through strategic content, influencer partnerships, and community engagement programs.</p>
+      <div class="project-result">📱 Grew follower engagement and brand awareness measurably</div>
+      <div class="project-tags">
+        <span class="project-tag">Buffer</span>
+        <span class="project-tag">Publer</span>
+        <span class="project-tag">Canva</span>
+        <span class="project-tag">LinkedIn</span>
+        <span class="project-tag">Meta</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="fade-in">
+    <p class="section-label">06 — Education & Certifications</p>
+    <h2 class="section-title">Credentials</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="edu-cert-grid fade-in">
+    <div>
+      <div class="sub-section-label">🎓 Academic Qualifications</div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-degree">MBA — Marketing</div>
+          <div class="edu-school">Princeton PG College of Management</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Bachelor's Degree</div>
+          <div class="edu-school">John Bauer College</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sub-section-label">🏆 Professional Certifications</div>
+      <div class="cert-list">
+        <div class="cert-item">
+          <div class="cert-name">Digital Marketer Certification</div>
+          <div class="cert-issuer">Tech Mahindra Smart Academy</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">AI-Powered Marketer</div>
+          <div class="cert-issuer">Semrush</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Email Marketing Certification</div>
+          <div class="cert-issuer">HubSpot Academy</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Data Integrations Certification</div>
+          <div class="cert-issuer">HubSpot Academy</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Google Ads Certification</div>
+          <div class="cert-issuer">Simplilearn / Google</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Digital Marketing & E-Commerce Certificate</div>
+          <div class="cert-issuer">Google</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Boost Lead Generation with SEO</div>
+          <div class="cert-issuer">Semrush</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="fade-in">
+      <p class="section-label">07 — Contact</p>
+      <h2 class="section-title">Let's work together</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Open to new opportunities, collaborations, or simply a conversation about digital marketing strategy. Reach out through any channel below.</p>
+    </div>
+
+    <div class="contact-links fade-in">
+      <a href="mailto:dasarisumanth54@gmail.com" class="contact-link">
+        <div class="contact-link-left">
+          <div class="contact-link-icon" style="background:rgba(234,67,53,0.1);">📧</div>
+          <div class="contact-link-info">
+            <h4>Email</h4>
+            <p>dasarisumanth54@gmail.com</p>
+          </div>
+        </div>
+        <div class="contact-arrow">→</div>
+      </a>
+
+      <a href="tel:+917288049647" class="contact-link">
+        <div class="contact-link-left">
+          <div class="contact-link-icon" style="background:rgba(0,212,160,0.1);">📱</div>
+          <div class="contact-link-info">
+            <h4>Phone / WhatsApp</h4>
+            <p>+91 72880 49647</p>
+          </div>
+        </div>
+        <div class="contact-arrow">→</div>
+      </a>
+
+      <a href="https://linkedin.com" target="_blank" class="contact-link">
+        <div class="contact-link-left">
+          <div class="contact-link-icon" style="background:rgba(0,119,181,0.1);">💼</div>
+          <div class="contact-link-info">
+            <h4>LinkedIn</h4>
+            <p>Connect with me professionally</p>
+          </div>
+        </div>
+        <div class="contact-arrow">→</div>
+      </a>
+
+      <div class="contact-link" style="cursor:default;">
+        <div class="contact-link-left">
+          <div class="contact-link-icon" style="background:rgba(255,107,53,0.1);">📍</div>
+          <div class="contact-link-info">
+            <h4>Location</h4>
+            <p>Hyderabad, Telangana, India</p>
+          </div>
+        </div>
+        <div class="contact-arrow" style="opacity:0.3">→</div>
+      </div>
+    </div>
+
+    <div class="hero-btns" style="justify-content:center;" class="fade-in">
+      <a href="mailto:dasarisumanth54@gmail.com" class="btn-primary">Send me an email →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Dasari Sumanth Reddy</span>. All rights reserved.</p>
+  <p>Designed & built with precision.</p>
+</footer>
+
+<script>
+  // ── MOBILE MENU ──
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Close menu on link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  // ── SCROLL ANIMATIONS ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── ACTIVE NAV HIGHLIGHT ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 120) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.style.color = '';
+      if (link.getAttribute('href') === `#${current}`) {
+        link.style.color = 'var(--accent)';
+      }
+    });
+  });
+
+  // ── SMOOTH ENTRY ANIMATIONS ──
+  const heroElements = document.querySelectorAll('.hero-badge, .hero-name, .hero-title, .hero-desc, .hero-stats, .hero-btns');
+  heroElements.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    el.style.transitionDelay = `${i * 0.1}s`;
+    setTimeout(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 200 + i * 100);
+  });
+</script>
+
+</body>
+</html>
